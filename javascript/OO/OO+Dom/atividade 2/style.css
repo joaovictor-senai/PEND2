@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: #0d1117; 
+    color: #e6edf3;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+}
+
+#titulo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    max-width: 320px;
+    padding: 11px 15px;
+    margin-bottom: 12px;
+    border: 1px solid #30363d;
+    background-color: #161b22;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #e6edf3;
+    outline: none;
+    transition: all 0.2s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input:focus {
+    border-color: #f78166;
+    box-shadow: 0 0 0 2px rgba(247, 129, 102, 0.2);
+}
+
+#botaocadastrar {
+    width: 100%;
+    max-width: 320px;
+    background-color: #f78166;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 6px;
+    box-shadow: 0 2px 8px rgba(247, 129, 102, 0.2);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#botaocadastrar:hover {
+    background-color: #ea6a4a;
+    box-shadow: 0 4px 12px rgba(247, 129, 102, 0.4);
+    transform: translateY(-1px);
+}
+
+#botaocadastrar:active {
+    transform: translateY(1px);
+}
+
+#resultado {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-produto {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-info strong {
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.item-info small {
+    color: #8b949e;
+    font-size: 0.75rem;
+}
+
+.item-preco {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-preco span {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.item-preco small {
+    color: #f78166; 
+    font-weight: 600;
+    font-size: 0.7rem;
+}
