@@ -35,24 +35,40 @@ class Produto {
     }
 }
 
-const produtos = [];
+const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+const produtos = produtosSalvos.map(produtoSalvo => {
+    return new Produto(
+        produtoSalvo.nome,
+        produtoSalvo.preco,
+        produtoSalvo.categoria,
+        produtoSalvo.desconto
+    );
+});
 
 const nome = document.querySelector('#nome');
 const preco = document.querySelector('#preco');
 const categoria = document.querySelector('#categoria');
 const desconto = document.querySelector('#desconto');
 const botaocadastrar = document.querySelector('#botaocadastrar');
+const resultado = document.querySelector('#resultado');
+
+function salvarProdutos() {
+    localStorage.setItem('produtos', JSON.stringify(produtos));
+}
+
+function atualizarTela() {
+    if (produtos.length > 0) {
+        produtos[0].exibirNaTela();
+    } else {
+        resultado.innerHTML = '';
+    }
+}
 
 function excluirProduto(indice) {
     produtos.splice(indice, 1);
-
-    const resultado = document.querySelector('#resultado');
-
-    resultado.innerHTML = '';
-
-    if (produtos.length > 0) {
-        produtos[0].exibirNaTela();
-    }
+    salvarProdutos();
+    atualizarTela();
 }
 
 botaocadastrar.addEventListener('click', function() {
@@ -64,6 +80,7 @@ botaocadastrar.addEventListener('click', function() {
     );
 
     produtos.push(produto);
+    salvarProdutos();
 
     console.log(produtos);
     produto.exibirNaTela();
@@ -73,3 +90,5 @@ botaocadastrar.addEventListener('click', function() {
     categoria.value = '';
     desconto.value = '';
 });
+
+atualizarTela();

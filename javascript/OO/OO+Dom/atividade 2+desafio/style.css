@@ -128,3 +128,23 @@ input:focus {
     font-weight: 600;
     font-size: 0.7rem;
 }
+
+
+#resultado button,
+.btn-excluir {
+    background-color: #da3633;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 8px;
+}
+
+#resultado button:hover,
+.btn-excluir:hover {
+    background-color: #e71b18;
+}
