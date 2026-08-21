@@ -17,7 +17,7 @@ class Produto {
 
         resultado.innerHTML = '';
 
-        produtos.forEach(produto => {
+        produtos.forEach((produto, indice) => {
             const precoFinal = produto.aplicarDesconto();
 
             resultado.innerHTML += `
@@ -27,6 +27,7 @@ class Produto {
                     <p>Categoria: ${produto.categoria}</p>
                     <p>Desconto: ${produto.desconto}%</p>
                     <p>Preço com desconto: R$ ${precoFinal.toFixed(2).replace('.', ',')}</p>
+                    <button onclick="excluirProduto(${indice})">Excluir</button>
                     <hr>
                 </div>
             `;
@@ -41,6 +42,18 @@ const preco = document.querySelector('#preco');
 const categoria = document.querySelector('#categoria');
 const desconto = document.querySelector('#desconto');
 const botaocadastrar = document.querySelector('#botaocadastrar');
+
+function excluirProduto(indice) {
+    produtos.splice(indice, 1);
+
+    const resultado = document.querySelector('#resultado');
+
+    resultado.innerHTML = '';
+
+    if (produtos.length > 0) {
+        produtos[0].exibirNaTela();
+    }
+}
 
 botaocadastrar.addEventListener('click', function() {
     const produto = new Produto(
