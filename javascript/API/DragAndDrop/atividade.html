@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caldeirão Arcano</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=MedievalSharp&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+<div class="stars-bg"></div>
+
+<header class="game-header">
+
+    <div class="header-content">
+        <h1>Caldeirão Arcano</h1>
+        <p>Combine elementos primordiais para forjar poções lendárias</p>
+    </div>
+
+    <div class="mago-hud">
+
+        <div class="mago-info">
+            <span class="mago-titulo" id="mago-titulo">Aprendiz de Alquimia</span>
+            <span class="mago-nivel" id="mago-nivel">Nv. 1</span>
+        </div>
+
+        <div class="xp-bar-container">
+            <div class="xp-bar-fill" id="xp-bar-fill" style="width: 0%;"></div>
+            <span class="xp-texto" id="xp-texto">0 / 300 XP</span>
+        </div>
+
+    </div>
+
+    <div class="header-actions">
+
+        <button id="btn-codex" class="btn-icon" title="Livro de Receitas">
+            📖 <span class="badge-codex" id="codex-counter">0/15</span>
+        </button>
+
+        <button id="btn-audio" class="btn-icon" title="Alternar Som">
+            🔊
+        </button>
+
+    </div>
+
+</header>
+
+<main class="game-container">
+
+    <section class="ingredientes-container">
+
+        <h2>Ingredientes <small>(Arraste ou Clique)</small></h2>
+
+        <div class="lista-ingredientes">
+
+            <div class="item" draggable="true" data-id="fogo" data-poder="25" data-nome="Cristal de Fogo">
+
+                <div class="icone-box fogo">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-fogo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fff77d" />
+                                <stop offset="40%" stop-color="#ff7b00" />
+                                <stop offset="100%" stop-color="#800000" />
+                            </linearGradient>
+
+                            <filter id="glow-fogo">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M32 4 L48 24 L38 58 L26 58 L16 24 Z" fill="url(#grad-fogo)" filter="url(#glow-fogo)" />
+                        <path d="M32 4 L38 24 L32 50 L26 24 Z" fill="#ffffff" opacity="0.4" />
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Cristal de Fogo</h3>
+                    <span class="poder">+25 Poder</span>
+                </div>
+
+            </div>
+
+            <div class="item" draggable="true" data-id="gelo" data-poder="20" data-nome="Essência de Gelo">
+
+                <div class="icone-box gelo">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-gelo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="50%" stop-color="#00d2ff" />
+                                <stop offset="100%" stop-color="#003366" />
+                            </linearGradient>
+
+                            <filter id="glow-gelo">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M32 2 L40 20 L58 32 L40 44 L32 62 L24 44 L6 32 L24 20 Z" fill="url(#grad-gelo)" filter="url(#glow-gelo)"/>
+                        <polygon points="32,16 38,32 32,48 26,32" fill="#ffffff" opacity="0.6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Essência de Gelo</h3>
+                    <span class="poder">+20 Poder</span>
+                </div>
+
+            </div>
+
+            <div class="item" draggable="true" data-id="estrela" data-poder="35" data-nome="Pó de Estrela">
+
+                <div class="icone-box estrela">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-estrela" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="50%" stop-color="#ffd700" />
+                                <stop offset="100%" stop-color="#ff8c00" />
+                            </linearGradient>
+
+                            <filter id="glow-estrela">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M32 4 L39 22 L58 24 L43 36 L48 55 L32 44 L16 55 L21 36 L6 24 L25 22 Z" fill="url(#grad-estrela)" filter="url(#glow-estrela)"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Pó de Estrela</h3>
+                    <span class="poder">+35 Poder</span>
+                </div>
+
+            </div>
+
+            <div class="item" draggable="true" data-id="sombra" data-poder="30" data-nome="Essência Sombria">
+
+                <div class="icone-box sombra">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-sombra" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#da70d6" />
+                                <stop offset="50%" stop-color="#4b0082" />
+                                <stop offset="100%" stop-color="#0f051d" />
+                            </linearGradient>
+
+                            <filter id="glow-sombra">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M32 6 Q48 16 44 36 T32 58 Q16 48 20 28 T32 6 Z" fill="url(#grad-sombra)" filter="url(#glow-sombra)"/>
+                        <circle cx="32" cy="30" r="6" fill="#000000" opacity="0.5"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Essência Sombria</h3>
+                    <span class="poder">+30 Poder</span>
+                </div>
+
+            </div>
+
+            <div class="item" draggable="true" data-id="agua" data-poder="15" data-nome="Lágrima de Sereia">
+
+                <div class="icone-box agua">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-agua" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#e0ffff" />
+                                <stop offset="40%" stop-color="#00d2ff" />
+                                <stop offset="100%" stop-color="#005bea" />
+                            </linearGradient>
+
+                            <filter id="glow-agua">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M32 6 C32 6 52 28 52 42 A20 20 0 0 1 12 42 C12 28 32 6 32 6 Z" fill="url(#grad-agua)" filter="url(#glow-agua)"/>
+                        <ellipse cx="26" cy="32" rx="4" ry="9" transform="rotate(-20 26 32)" fill="#ffffff" opacity="0.65"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Lágrima de Sereia</h3>
+                    <span class="poder">+15 Poder</span>
+                </div>
+
+            </div>
+
+            <div class="item" draggable="true" data-id="cogumelo" data-poder="20" data-nome="Cogumelo Místico">
+
+                <div class="icone-box cogumelo">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-cogumelo-chapeu" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ccff00" />
+                                <stop offset="60%" stop-color="#10b981" />
+                                <stop offset="100%" stop-color="#047857" />
+                            </linearGradient>
+
+                            <linearGradient id="grad-cogumelo-haste" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#fef08a" />
+                                <stop offset="100%" stop-color="#854d0e" />
+                            </linearGradient>
+
+                            <filter id="glow-cogumelo">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M27 36 L25 56 C25 58 39 58 39 56 L37 36 Z" fill="url(#grad-cogumelo-haste)"/>
+                        <path d="M10 38 C10 18 54 18 54 38 C42 42 22 42 10 38 Z" fill="url(#grad-cogumelo-chapeu)" filter="url(#glow-cogumelo)"/>
+                        <circle cx="22" cy="27" r="3.5" fill="#ffffff" opacity="0.8"/>
+                        <circle cx="32" cy="23" r="4.5" fill="#ffffff" opacity="0.8"/>
+                        <circle cx="42" cy="29" r="3" fill="#ffffff" opacity="0.8"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Cogumelo Místico</h3>
+                    <span class="poder">+20 Poder</span>
+                </div>
+
+            </div>
+
+            <div class="item" draggable="true" data-id="dragao" data-poder="45" data-nome="Escama de Dragão">
+
+                <div class="icone-box dragao">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-dragao" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fef08a" />
+                                <stop offset="40%" stop-color="#ef4444" />
+                                <stop offset="100%" stop-color="#450a0a" />
+                            </linearGradient>
+
+                            <filter id="glow-dragao">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M32 4 C50 18 54 38 32 60 C10 38 14 18 32 4 Z" fill="url(#grad-dragao)" filter="url(#glow-dragao)"/>
+                        <path d="M32 4 L32 60 M32 18 L48 30 M32 28 L44 42 M32 18 L16 30 M32 28 L20 42" stroke="#fef08a" stroke-width="1.5" stroke-linecap="round" opacity="0.5" fill="none"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Escama de Dragão</h3>
+                    <span class="poder">+45 Poder</span>
+                </div>
+
+            </div>
+
+            <div class="item" draggable="true" data-id="tempo" data-poder="50" data-nome="Areia do Tempo">
+
+                <div class="icone-box tempo">
+
+                    <svg viewBox="0 0 64 64" class="svg-realista">
+
+                        <defs>
+
+                            <linearGradient id="grad-tempo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="50%" stop-color="#f59e0b" />
+                                <stop offset="100%" stop-color="#78350f" />
+                            </linearGradient>
+
+                            <filter id="glow-tempo">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                        </defs>
+
+                        <path d="M16 8 L48 8 L36 30 L48 56 L16 56 L28 30 Z" fill="url(#grad-tempo)" filter="url(#glow-tempo)"/>
+                        <polygon points="18,10 46,10 32,28" fill="#fef3c7" opacity="0.75"/>
+                        <polygon points="22,54 42,54 32,38" fill="#fef3c7" opacity="0.9"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="info">
+                    <h3>Areia do Tempo</h3>
+                    <span class="poder">+50 Poder</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="caldeirao-area">
+
+        <canvas id="canvas-particulas"></canvas>
+
+        <div class="mago-personagem" id="mago-personagem" title="Clique para conversar com o Mago!">
+
+            <div class="balao-fala" id="mago-balao">
+                <p id="mago-fala">Saudações, aprendiz! Clique em mim se precisar de um conselho mágico.</p>
+            </div>
+
+            <div class="mago-svg-container">
+
+                <svg viewBox="0 0 120 140" class="svg-mago">
+
+                    <defs>
+
+                        <linearGradient id="grad-mago-chapéu" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#7c3aed" />
+                            <stop offset="100%" stop-color="#311042" />
+                        </linearGradient>
+
+                        <linearGradient id="grad-gem-mago" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#67e8f9" />
+                            <stop offset="100%" stop-color="#0284c7" />
+                        </linearGradient>
+
+                        <filter id="glow-cajado">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+
+                    </defs>
+
+                    <rect x="18" y="30" width="6" height="100" rx="3" fill="#582f0e"/>
+
+                    <circle cx="21" cy="25" r="12" fill="#38bdf8" filter="url(#glow-cajado)"/>
+                    <circle cx="21" cy="25" r="6" fill="#ffffff"/>
+
+                    <path d="M45 80 L75 80 L88 130 L32 130 Z" fill="#4c1d95"/>
+                    <path d="M52 80 L68 80 L72 130 L48 130 Z" fill="#6d28d9"/>
+
+                    <ellipse cx="60" cy="68" rx="14" ry="12" fill="#fde047" opacity="0.2"/>
+                    <circle cx="60" cy="65" r="15" fill="#fca5a5"/>
+                    <circle cx="54" cy="63" r="2.5" fill="#1e1b4b"/>
+                    <circle cx="66" cy="63" r="2.5" fill="#1e1b4b"/>
+                    <path d="M42 68 C42 100 78 100 78 68 C70 90 50 90 42 68 Z" fill="#f3f4f6"/>
+                    <path d="M53 69 Q60 74 67 69" stroke="#d1d5db" stroke-width="2" fill="none"/>
+
+                    <path d="M30 55 C30 55 60 50 90 55 C80 50 72 45 68 40 L60 8 L52 40 C48 45 40 50 30 55 Z" fill="url(#grad-mago-chapéu)"/>
+
+                    <ellipse cx="60" cy="53" rx="32" ry="7" fill="#3b0764"/>
+
+                    <polygon points="60,20 62,24 66,25 63,28 64,32 60,30 56,32 57,28 54,25 58,24" fill="#facc15"/>
+
+                    <circle cx="60" cy="49" r="4" fill="url(#grad-gem-mago)"/>
+
+                </svg>
+
+            </div>
+
+        </div>
+
+        <div id="caldeirao" class="caldeirao">
+
+            <div class="bolhas-container">
+                <div class="bolha b1"></div>
+                <div class="bolha b2"></div>
+                <div class="bolha b3"></div>
+                <div class="bolha b4"></div>
+            </div>
+
+            <div class="liquido-caldeirao" id="liquido">
+                <div id="ingredientes-no-caldeirao" class="ingredientes-no-caldeirao"></div>
+            </div>
+
+            <div class="borda-caldeirao"></div>
+
+            <div class="conteudo-overlay">
+                <p class="dica" id="dica-texto">Arraste ou clique nos ingredientes</p>
+            </div>
+
+        </div>
+
+        <div class="painel-controle">
+
+            <div class="stat-box">
+                <span>Poder Concentrado</span>
+                <strong id="poder">0</strong>
+            </div>
+
+            <div class="botoes">
+                <button id="preparar" class="btn btn-preparar" disabled>Misturar Poção</button>
+                <button id="limpar" class="btn btn-limpar">Esvaziar</button>
+            </div>
+
+        </div>
+
+        <div class="placar">
+            <span>Reputação Arcana:</span>
+            <strong id="pontos">0 XP</strong>
+        </div>
+
+    </section>
+
+</main>
+
+<div id="modal-resultado" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="badge-nova-descoberta hidden" id="badge-descoberta">✨ Nova Receita Desbloqueada!</div>
+
+        <div class="pocao-frasco-wrapper">
+
+            <svg viewBox="0 0 100 120" class="svg-frasco">
+
+                <defs>
+
+                    <filter id="glow-frasco" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+
+                </defs>
+
+                <rect x="42" y="8" width="16" height="10" rx="2" fill="#8b5a2b"/>
+
+                <path d="M40 18 L60 18 L58 32 L42 32 Z" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+
+                <path d="M42 32 C30 35 15 50 15 75 C15 100 35 110 50 110 C65 110 85 100 85 75 C85 50 70 35 58 32 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" filter="url(#glow-frasco)"/>
+
+                <path id="frasco-liquido" d="M20 75 C20 98 35 106 50 106 C65 106 80 98 80 75 C70 70 60 80 50 75 C40 70 30 80 20 75 Z" fill="#4c1d95"/>
+
+                <path d="M25 55 C22 65 22 80 26 92" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.5" fill="none"/>
+
+                <circle cx="70" cy="85" r="3" fill="#ffffff" opacity="0.6"/>
+                <circle cx="62" cy="95" r="2" fill="#ffffff" opacity="0.4"/>
+
+            </svg>
+
+        </div>
+
+        <h2 id="pocao-titulo">Poção Criada!</h2>
+        <p id="pocao-desc">Sua mistura gerou um efeito poderoso.</p>
+        <button id="btn-fechar-modal" class="btn">Continuar</button>
+
+    </div>
+
+</div>
+
+<div id="modal-codex" class="modal hidden">
+
+    <div class="modal-content codex-content">
+
+        <button class="btn-fechar-x" id="btn-fechar-codex">&times;</button>
+
+        <h2>📖 Codex de Poções Arcanas</h2>
+        <p class="codex-sub">Descubra as combinações secretas para completar seu grimório.</p>
+
+        <div class="codex-grid" id="codex-grid">
+        </div>
+
+        <div class="codex-footer">
+            <button id="btn-reset-game" class="btn-danger">Reiniciar Progresso</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="atividade.js"></script>
+
+
+</body>
+
+</html>
