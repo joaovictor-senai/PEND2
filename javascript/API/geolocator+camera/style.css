@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background-color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+#container-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+#pin-status {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+}
+
+#pin-texto {
+  font-size: 0.85rem;
+  color: #ea1d2c;
+  font-weight: 600;
+}
+
+#localizacao, #camera {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 1rem;
+  color: #0f172a;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+#map {
+  width: 100%;
+  height: 240px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #cbd5e1;
+}
+
+.dados-gps p {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.dados-gps span {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #0f172a;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+#video, #foto-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.acoes-camera {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ea1d2c;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #c81624;
+}
+
+button:disabled {
+  background-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+#confirmar-registro {
+  width: 100%;
+  background-color: #ea1d2c;
+  font-size: 1rem;
+}
+
+#confirmar-registro:hover:not(:disabled) {
+  background-color: #c81624;
+}
+
+#confirmar-registro:disabled {
+  background-color: #cbd5e1 !important;
+  color: #94a3b8 !important;
+  cursor: not-allowed;
+}
+
+.motoboy-icon {
+  width: 36px;
+  height: 36px;
+  background-color: #ea1d2c;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.oculto {
+  display: none !important;
+}

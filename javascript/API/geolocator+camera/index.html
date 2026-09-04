@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status da Localização e Registro</title>
+
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="card-container">
+    
+    <div id="container-pin">
+      <img id="pin-status" src="" alt="Aguardando permissão..." class="oculto">
+      <p id="pin-texto">Aguardando validação do GPS...</p>
+    </div>
+
+   
+    <div id="localizacao">
+      <h2>Localização em Tempo Real</h2>
+
+      <div id="map"></div>
+
+      <div class="dados-gps">
+        <p>Latitude: <span id="latitude">Aguardando...</span></p>
+        <p>Longitude: <span id="longitude">Aguardando...</span></p>
+        <p>Precisão: <span id="precisao">Aguardando...</span></p>
+      </div>
+    </div>
+
+   
+    <div id="camera">
+      <h2>Câmera</h2>
+      <div class="video-wrapper">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <img id="foto-preview" class="oculto" alt="Foto capturada">
+      </div>
+
+      <div class="acoes-camera">
+        <button id="abrir-camera">Abrir Câmera</button>
+        <button id="tirar-foto" disabled class="oculto">Tirar Foto</button>
+      </div>
+    </div>
+
+   
+    <button id="confirmar-registro" disabled>Confirmar Registro</button>
+  </main>
+
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
