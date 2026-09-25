@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyTime</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topo">
+    <h1>SkyTime</h1>
+    <nav class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#clima">Clima</a>
+        <a href="#previsao">Previsão</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
+</header>
+<main class="conteudo">
+<section class="inicio" id="inicio">
+    <div>
+        <p class="subtitulo">PREVISÃO DO TEMPO</p>
+        <h2>O clima da sua cidade em um só lugar.</h2>
+        <p>Consulte temperatura, umidade, vento e previsão dos próximos dias.</p>
+        <a href="#clima" class="botao-inicio">Consultar clima</a>
+    </div>
+    <div class="inicio-visual">
+        <div class="sol"></div>
+    </div>
+</section>
+<section class="clima" id="clima">
+    <div class="busca">
+        <div>
+            <p class="titulo-secao">CONSULTAR CLIMA</p>
+            <h2>Como está o tempo?</h2>
+        </div>
+        <div class="campo-busca">
+            <input type="text" id="cidade" placeholder="Digite a cidade">
+            <button id="buscar">Buscar</button>
+        </div>
+    </div>
+    <div id="resultado" class="resultado">
+        <div class="resultado-inicial">
+            <h3>Pesquise uma cidade</h3>
+            <p>Digite uma cidade para consultar o clima.</p>
+        </div>
+    </div>
+</section>
+<section class="previsao" id="previsao">
+    <p class="titulo-secao">PREVISÃO</p>
+    <h2>Próximos dias</h2>
+    <div id="previsao-dias" class="previsao-dias">
+        <div class="card-previsao">
+            <h3>Previsão</h3>
+            <p>Consulte uma cidade.</p>
+        </div>
+    </div>
+    <div id="grafico-container" class="grafico-container">
+        <p class="titulo-secao">TEMPERATURA</p>
+        <h2>Temperatura nos próximos dias</h2>
+        <canvas id="grafico-clima"></canvas>
+    </div>
+</section>
+<section class="noticias" id="noticias">
+    <p class="titulo-secao">NOTÍCIAS</p>
+    <h2>Últimas notícias</h2>
+    <div id="lista-noticias" class="lista-noticias">
+        <p class="carregando">Carregando notícias...</p>
+    </div>
+</section>
+<section class="sobre" id="sobre">
+    <p class="titulo-secao">SOBRE</p>
+    <h2>Sobre o projeto</h2>
+    <p>O SkyTime é uma aplicação web desenvolvida em JavaScript que integra APIs em tempo real para oferecer previsões meteorológicas detalhadas e as últimas notícias do Brasil. O objetivo é reunir informação útil e atualizada numa interface simples, rápida e intuitiva..</p>
+</section>
+</main>
+<footer id="rodape">
+    <p>© 2026 SkyTime - Todos os direitos reservados</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+

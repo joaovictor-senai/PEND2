@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f2f6f9;
+    color: #333;
+}
+
+.topo {
+    background: #1d5477;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topo h1 {
+    color: white;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.conteudo {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.inicio {
+    background: #dcecf5;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.inicio h2 {
+    color: #173b57;
+    font-size: 36px;
+    margin: 15px 0;
+}
+
+.inicio p {
+    margin-bottom: 20px;
+}
+
+.botao-inicio {
+    background: #1d5477;
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+}
+
+.sol {
+    width: 100px;
+    height: 100px;
+    background: #f9c74f;
+    border-radius: 50%;
+}
+
+.busca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.campo-busca {
+    display: flex;
+}
+
+.campo-busca input {
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+.campo-busca button {
+    padding: 12px 20px;
+    background: #1d5477;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.resultado {
+    background: #1d5477;
+    color: white;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.resultado-inicial {
+    text-align: center;
+}
+
+.clima-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.temperatura-atual h3 {
+    font-size: 55px;
+}
+
+.detalhes-clima {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.detalhes-clima div {
+    background: #326987;
+    padding: 15px;
+    text-align: center;
+}
+
+.previsao {
+    margin-bottom: 40px;
+}
+
+.previsao-dias {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.card-previsao {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.icone-previsao {
+    width: 45px;
+    height: 45px;
+    background: #f9c74f;
+    border-radius: 50%;
+    margin: 15px auto;
+}
+
+.grafico-container {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 25px;
+    height: 350px;
+}
+
+#grafico-clima {
+    width: 100% !important;
+    height: 250px !important;
+}
+
+.noticias {
+    margin-bottom: 40px;
+}
+
+.lista-noticias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card-noticia {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.card-noticia img {
+    width: calc(100% + 40px);
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: -20px -20px 15px;
+}
+
+.card-noticia h3 {
+    color: #173b57;
+    margin: 10px 0;
+}
+
+.card-noticia p {
+    line-height: 1.5;
+}
+
+.fonte-noticia {
+    color: #1d5477;
+    font-size: 13px;
+}
+
+.card-noticia a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #1d5477;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.carregando {
+    background: white;
+    padding: 20px;
+}
+
+.sobre {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.titulo-secao {
+    color: #1d5477;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+#rodape {
+    background: #1d5477;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media (max-width: 700px) {
+    .topo {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .inicio {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .busca {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .previsao-dias,
+    .lista-noticias {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detalhes-clima {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+    .previsao-dias,
+    .lista-noticias {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio {
+        padding: 30px 20px;
+    }
+}
